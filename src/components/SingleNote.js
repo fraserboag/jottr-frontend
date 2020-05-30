@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from 'axios';
 import '../styles/components/SingleNote.scss';
 import SyncStatus from './SyncStatus';
 
 export default function SingleNote(props) {
-
-	// Get ID from URL
-	const { id } = useParams();
 
 	// Set state
 	const [note, setNote] = useState({ title: "", content: "" });
@@ -16,9 +12,9 @@ export default function SingleNote(props) {
 
 	// Grab post from server
 	useEffect(() => {
-		if (id) {
+		if (props.activeNoteId) {
 			document.querySelector('#note-content').focus();
-			axios.get('http://localhost:5000/notes/' + id)
+			axios.get('http://localhost:5000/notes/' + props.activeNoteId)
 				.then((res) => {
 					setNote({
 						title: res.data.title,
@@ -27,7 +23,7 @@ export default function SingleNote(props) {
 				})
 				.catch(err => console.log(err));
 		}
-	}, [id]);
+	}, [props.activeNoteId]);
 
 	// Set interval to listen for need to sync
 	useEffect(() => {
@@ -37,7 +33,7 @@ export default function SingleNote(props) {
 				document.querySelector('#form-update-note .submit').click();
 			}
 		}, 1000);
-		return () => clearInterval(syncChecker);
+		return () => clearInterval(syncChecker); // unmount
 	}, [syncStatus, lastInputTime]);
 
 	// Handle change of title input
@@ -72,7 +68,7 @@ export default function SingleNote(props) {
 			content: note.content
 		}
 
-		axios.put('http://localhost:5000/notes/update/'+id, updatedNote)
+		axios.put('http://localhost:5000/notes/update/'+props.activeNoteId, updatedNote)
 			.then(res => {
 				console.log(res.data);
 				setTimeout(() => setSyncStatus('synced'), 500);				
@@ -81,7 +77,7 @@ export default function SingleNote(props) {
 	}
 
 	// Output UI
-	if (id) {
+	if (props.activeNoteId) {
 
 		return (
 			<div className="SingleNote">
