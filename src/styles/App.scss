@@ -1,0 +1,38 @@
+@import 'animations';
+
+*{
+	box-sizing: border-box;
+}
+
+body, input, textarea{
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+	color: #143968;
+	background: #f6f9fc;
+	line-height: 1.6;
+}
+
+#root{
+	display: flex;
+	justify-content: center;
+	height: 100vh;
+}
+
+nav{
+	ul{
+		padding: 0;
+		list-style: none;
+		display: flex;
+		flex-direction: row;
+		margin-top: 0;
+		li{
+			margin-right: 20px;
+		}
+	}
+}
+
+a{
+	color: #143968;
+	text-decoration: none;
+}

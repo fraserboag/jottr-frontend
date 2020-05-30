@@ -1,0 +1,45 @@
+.NotesList{
+	background: #f6f9fc;
+
+	ul{
+		margin: 0;
+		padding: 40px 40px 0 40px;
+		list-style-type: none;
+
+		li{
+			position: relative;
+
+			a{
+				display: block;
+				width: 100%;
+				padding: 8px;
+			}
+
+			.delete{
+				position: absolute;
+				top: 50%;
+				right: 8px;
+				transform: translateY(-50%);
+				cursor: pointer;
+				font-weight: 700;
+				color: red;
+				font-size: 10px;
+				padding: 2px 5px;
+			}
+
+			.delete:hover{
+				background: red;
+				color: white;
+			}
+		}
+
+		li:hover{
+			background: white;
+		}
+
+		li.active{
+			background: white;
+			font-weight: 700;
+		}
+	}
+}

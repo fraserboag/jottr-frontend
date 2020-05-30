@@ -1,0 +1,24 @@
+.CreateNote{
+	margin: 20px 40px 0 40px;
+	padding: 20px 0 0 0;
+	display: flex;
+	flex-direction: row;
+
+	input[type=text]{
+		border: 0;
+		background: white;
+		padding: 8px;
+		appearance: none;
+		outline: none;
+		flex: 5;
+	}
+
+	input[type=submit]{
+		flex: 1;
+		background: #143968;
+		color: white;
+		font-weight: 700;
+		border: 0;
+		cursor: pointer;
+	}
+}

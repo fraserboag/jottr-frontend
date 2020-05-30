@@ -1,0 +1,35 @@
+.SingleNote{
+	padding: 40px;
+	box-shadow: 0 0 20px 0px transparentize(#143968, 0.8);
+
+	form{
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+
+		input, textarea{
+			background: transparent;
+			border: 0;
+			appearance: none;
+			outline: none;
+			width: 100%;
+		}
+
+		.SyncStatus{
+			flex: 1;
+		}
+
+		.title{
+			font-size: 30px;
+			margin-bottom: 20px;
+			font-weight: 700;
+			flex: 2;
+		}
+
+		textarea{
+			width: 100%;
+			min-height: 200px;
+			flex: 20;
+		}
+	}
+}

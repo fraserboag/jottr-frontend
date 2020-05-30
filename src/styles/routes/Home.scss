@@ -1,0 +1,13 @@
+.Home{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+
+	.NotesList{
+		flex: 1;
+	}
+
+	.SingleNote{
+		flex: 3;
+	}
+}

@@ -1,0 +1,15 @@
+.SyncStatus{
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+
+	img{
+		width: 14px;
+		height: 14px;
+		margin-right: 5px;
+	}
+
+	img.spin{
+		animation: spin 2s linear infinite;
+	}
+}
