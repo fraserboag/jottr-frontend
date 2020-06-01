@@ -6,24 +6,20 @@ import SyncStatus from './SyncStatus';
 export default function SingleNote(props) {
 
 	// Set state
-	const [note, setNote] = useState({ title: "", content: "" });
+	const [note, setNote] = useState({ title: '', content: '' });
 	const [syncStatus, setSyncStatus] = useState('synced');
 	const [lastInputTime, setLastInputTime] = useState(Date.now());
 
-	// Grab post from server
+	// Set active note to value passed into props
 	useEffect(() => {
-		if (props.activeNoteId) {
+		if (props.activeNote) {
+			setNote({
+				title: props.activeNote.title,
+				content: props.activeNote.content
+			});
 			document.querySelector('#note-content').focus();
-			axios.get('http://localhost:5000/notes/' + props.activeNoteId)
-				.then((res) => {
-					setNote({
-						title: res.data.title,
-						content: res.data.content
-					});
-				})
-				.catch(err => console.log(err));
 		}
-	}, [props.activeNoteId]);
+	}, [props.activeNote]);
 
 	// Set interval to listen for need to sync
 	useEffect(() => {
@@ -32,7 +28,7 @@ export default function SingleNote(props) {
 			if (syncStatus === 'not synced' && timeSinceLastInput > 500) {
 				document.querySelector('#form-update-note .submit').click();
 			}
-		}, 1000);
+		}, 500);
 		return () => clearInterval(syncChecker); // unmount
 	}, [syncStatus, lastInputTime]);
 
@@ -68,16 +64,16 @@ export default function SingleNote(props) {
 			content: note.content
 		}
 
-		axios.put('http://localhost:5000/notes/update/'+props.activeNoteId, updatedNote)
+		axios.put('http://localhost:5000/notes/update/'+props.activeNote._id, updatedNote)
 			.then(res => {
-				console.log(res.data);
-				setTimeout(() => setSyncStatus('synced'), 500);				
+				props.onUpdateNote(updatedNote, props.activeNote._id); // notify parent
+				setSyncStatus('synced');		
 			})
 			.catch(err => console.log(err));
 	}
 
 	// Output UI
-	if (props.activeNoteId) {
+	if (props.activeNote) {
 
 		return (
 			<div className="SingleNote">

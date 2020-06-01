@@ -21,23 +21,22 @@ export default function Home(props) {
 	const getNotes = useCallback(() => {
 		axios.get('http://localhost:5000/notes/byuser/' + props.activeUser.userId)
 			.then((res) => {
-				console.log(res.data);
 				setNotes(res.data);
 			})
 			.catch(err => console.log(err));
 	}, [props]);
 
-	// Get notes for current active user
+	// Get notes for current active user (on Mount)
 	useEffect(() => {
 		getNotes();
 	}, [getNotes]);
 
-	// Handle creation of new note
+	// Handle creation of new note (NotesList component)
 	const onCreateNote = () => {
 		getNotes();	
 	}
 
-	// Handle delete button click
+	// Handle delete button click (NotesList component)
 	const onClickDelete = (deleteId) => {
 		axios.delete('http://localhost:5000/notes/delete/' + deleteId)
 			.then(res => {
@@ -52,18 +51,30 @@ export default function Home(props) {
 			.catch(err => console.log(err));
 	}
 
+	// Handle note update (SingleNote component)
+	const onUpdateNote = (updatedNote, updatedNoteId) => {
+		setNotes(
+			notes.map(note => note._id === updatedNoteId ? {
+				...note,
+				title: updatedNote.title,
+				content: updatedNote.content
+			} : note)
+		);
+	}
+
 	return (
 		<div className="Home">
 			<NotesList
 				activeUser={props.activeUser}
 				notes={notes}
+				activeNoteId={id}
 				onClickDelete={onClickDelete}
 				onCreateNote={onCreateNote}
-				activeNoteId={id}
 			/>
 			<SingleNote
 				activeUser={props.activeUser}
-				activeNoteId={id}	
+				activeNote={notes.find(note => { return note._id === id })}
+				onUpdateNote={onUpdateNote}
 			/>
 		</div>
 	);
