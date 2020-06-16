@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/components/CreateNote.scss';
 
@@ -7,9 +6,6 @@ export default function CreateNote(props) {
 
 	// Set state
 	const [newNoteTitle, setNewNoteTitle] = useState('');
-
-	// Router history hook
-	const history = useHistory();
 
 	// Handle change of title input 
 	const onChangeTitle = (e) => {
@@ -22,15 +18,14 @@ export default function CreateNote(props) {
 		e.preventDefault();
 
 		const newNote = {
-			userId: props.activeUser.userId,
-			title: newNoteTitle,
+			userId: props.activeUser._id,
+			title: newNoteTitle ? newNoteTitle : 'Untitled',
 			content: ''
 		}
 
 		axios.post('http://localhost:5000/notes/add', newNote)
 			.then(res => {
-				history.push('/note/' + res.data);
-				props.onCreateNote();
+				props.onCreateNote(res);
 				setNewNoteTitle('');
 			})
 			.catch(err => console.log(err));

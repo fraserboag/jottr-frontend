@@ -28,28 +28,17 @@ export default function SingleNote(props) {
 			if (syncStatus === 'not synced' && timeSinceLastInput > 500) {
 				document.querySelector('#form-update-note .submit').click();
 			}
-		}, 500);
+		}, 200);
 		return () => clearInterval(syncChecker); // unmount
 	}, [syncStatus, lastInputTime]);
 
-	// Handle change of title input
-	const onChangeTitle = (e) => {
+	// Handle change of input
+	const onChange = (e, field) => {
 		setSyncStatus('not synced');
 		setLastInputTime(Date.now());
 		const val = e.target.value;
-		setNote((prevState) => {
-			return { ...prevState, title: val }
-		});
-	}
-
-	// Handle change of content textarea
-	const onChangeContent = (e) => {
-		setSyncStatus('not synced');
-		setLastInputTime(Date.now());
-		const val = e.target.value;
-		setNote((prevState) => {
-			return { ...prevState, content: val }
-		});
+		if (field === 'title') setNote({ ...note, title: val });
+		if (field === 'content') setNote({ ...note, content: val });
 	}
 
 	// Handle form submit
@@ -59,7 +48,7 @@ export default function SingleNote(props) {
 		setSyncStatus('syncing');
 
 		const updatedNote = {
-			userId: props.activeUser.userId,
+			userId: props.activeUser._id,
 			title: note.title,
 			content: note.content
 		}
@@ -79,8 +68,8 @@ export default function SingleNote(props) {
 			<div className="SingleNote">
 				<form id="form-update-note" onSubmit={onSubmit}>
 					<SyncStatus status={syncStatus} />
-					<input className="title" type="text" value={note.title} onChange={onChangeTitle} placeholder="Title" />
-					<textarea id="note-content" value={note.content} onChange={onChangeContent} placeholder="Start typing your note here..." />
+					<input className="title" type="text" value={note.title} onChange={(e) => onChange(e, 'title')} placeholder="Title" />
+					<textarea id="note-content" value={note.content} onChange={(e) => onChange(e, 'content')} placeholder="Start typing your note here..." />
 					<input type="submit" className="submit" hidden />
 				</form>
 			</div>

@@ -1,22 +1,28 @@
+@import '../variables';
+
 .CreateNote{
-	margin: 20px 40px 0 40px;
-	padding: 20px 0 0 0;
+	margin: 15px 20px 0 20px;
 	display: flex;
 	flex-direction: row;
 
 	input[type=text]{
 		border: 0;
-		background: white;
+		background: $purewhite;
 		padding: 8px;
 		appearance: none;
 		outline: none;
 		flex: 5;
+		font-weight: bold;
+	}
+
+	input[type=text]::placeholder{
+		font-weight: normal;
 	}
 
 	input[type=submit]{
 		flex: 1;
-		background: #143968;
-		color: white;
+		background: $black;
+		color: $purewhite;
 		font-weight: 700;
 		border: 0;
 		cursor: pointer;

@@ -1,9 +1,12 @@
+@import '../variables';
+
 .NotesList{
-	background: #f6f9fc;
+	background: $white;
+	position: relative;
 
 	ul{
 		margin: 0;
-		padding: 40px 40px 0 40px;
+		padding: 15px 0 0 0;
 		list-style-type: none;
 
 		li{
@@ -12,33 +15,39 @@
 			a{
 				display: block;
 				width: 100%;
-				padding: 8px;
+				padding: 8px 20px;
+
+				.timestamp{
+					font-weight: normal;
+					font-size: 14px;
+					opacity: 0.5;
+				}
 			}
 
 			.delete{
 				position: absolute;
 				top: 50%;
-				right: 8px;
+				right: 20px;
 				transform: translateY(-50%);
 				cursor: pointer;
 				font-weight: 700;
-				color: red;
-				font-size: 10px;
+				color: $red;
+				font-size: 14px;
 				padding: 2px 5px;
 			}
 
 			.delete:hover{
-				background: red;
-				color: white;
+				background: $red;
+				color: $purewhite;
 			}
 		}
 
 		li:hover{
-			background: white;
+			background: $purewhite;
 		}
 
 		li.active{
-			background: white;
+			background: $purewhite;
 			font-weight: 700;
 		}
 	}

@@ -1,7 +1,15 @@
+@import '../variables';
+
 .SyncStatus{
+	position: absolute;
 	display: flex;
 	align-items: center;
 	font-size: 14px;
+	right: 0;
+	top: 0;
+	background: $purewhite;
+	padding: 5px 10px;
+	box-shadow: 0 0 20px -5px transparentize($black, 0.8);
 
 	img{
 		width: 14px;

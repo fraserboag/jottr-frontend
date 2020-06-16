@@ -1,6 +1,16 @@
+@import '../variables';
+
 .LogoBar{
-	padding: 20px 40px;
-	background: #7fd89a;
-	color: #143968;
+	padding: 15px 20px;
+	background: $green;
+	color: $black;
 	font-weight: 700;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	.logout{
+		cursor: pointer;
+		font-weight: normal;
+	}
 }

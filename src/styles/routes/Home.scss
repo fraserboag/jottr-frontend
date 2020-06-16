@@ -1,13 +1,21 @@
+@import '../variables';
+
 .Home{
 	display: flex;
 	flex-direction: row;
 	width: 100%;
+
+	.wrapper{
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+	}
 
 	.NotesList{
 		flex: 1;
 	}
 
 	.SingleNote{
-		flex: 3;
+		flex: 2.5;
 	}
 }
