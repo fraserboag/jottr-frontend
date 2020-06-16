@@ -16,8 +16,8 @@ export default function NotesList(props) {
 			<ul>
 				{props.notes.map((note, index) => (
 					<li key={index} className={(note._id === props.activeNoteId) ? 'active' : ''}>
-						<Link to={'/note/' + note._id}>
-							<div className="title">{note.title}</div>
+						<Link to={'/note/' + note._id} onClick={props.onOpenNote}>
+							<div className="title">{note.title ? note.title : 'Untitled'}</div>
 							<div className="timestamp">{moment(note.updatedAt).fromNow()}</div>
 						</Link>
 						<span className="delete" onClick={() => { props.onClickDelete(note._id) }}>Delete</span>

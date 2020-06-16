@@ -11,6 +11,7 @@ export default function Home(props) {
 	// Set state
 	const [notes, setNotes] = useState([]);
 	const [checkedForNotes, setCheckedForNotes] = useState(false);
+	const [recentlySorted, setRecentlySorted] = useState(true);
 
 	// Get ID from URL
 	const { id } = useParams();
@@ -54,14 +55,31 @@ export default function Home(props) {
 
 	// Handle note update (SingleNote component)
 	const updateNoteState = (updatedNote, updatedNoteId) => {
-		setNotes(
-			notes.map(note => note._id === updatedNoteId ? {
-				...note,
-				title: updatedNote.title,
-				content: updatedNote.content,
-				updatedAt: Date.now()
-			} : note)
-		);
+
+		let updatedNotes = notes.map(note => note._id === updatedNoteId ? {
+			...note,
+			title: updatedNote.title,
+			content: updatedNote.content,
+			updatedAt: Date.now()
+		} : note);
+
+		// Latest note rises to the top
+		if (!recentlySorted) {
+			setRecentlySorted(true);
+			updatedNotes.sort((a, b) => {
+				var keyA = new Date(a.updatedAt);
+				var keyB = new Date(b.updatedAt);
+				if (keyA < keyB) return 1;
+				if (keyA > keyB) return -1;
+				return 0;
+			});
+		}
+
+		setNotes(updatedNotes);
+	}
+
+	const onOpenNote = () => {
+		setRecentlySorted(false);
 	}
 
 	return (
@@ -72,6 +90,7 @@ export default function Home(props) {
 						activeUser={props.activeUser}
 						notes={notes}
 						activeNoteId={id}
+						onOpenNote={onOpenNote}
 						onClickDelete={onClickDelete}
 						onCreateNote={onCreateNote}
 						logoutUser={props.logoutUser}

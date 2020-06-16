@@ -19,7 +19,7 @@ export default function CreateNote(props) {
 
 		const newNote = {
 			userId: props.activeUser._id,
-			title: newNoteTitle ? newNoteTitle : 'Untitled',
+			title: newNoteTitle,
 			content: ''
 		}
 
