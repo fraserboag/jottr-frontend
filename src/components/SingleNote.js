@@ -6,18 +6,16 @@ import SyncStatus from './SyncStatus';
 export default function SingleNote(props) {
 
 	// Set state
-	const [note, setNote] = useState({ title: '', content: '' });
 	const [syncStatus, setSyncStatus] = useState('synced');
 	const [lastInputTime, setLastInputTime] = useState(Date.now());
 
-	// Set active note to value passed into props
+	// Focus main textarea
 	useEffect(() => {
-		if (props.activeNote) {
-			setNote({
-				title: props.activeNote.title,
-				content: props.activeNote.content
-			});
-			document.querySelector('#note-content').focus();
+		if (!props.activeNote) return
+		if (document.querySelector('input.title') !== document.activeElement) {
+			const el = document.querySelector('#note-content');
+			el.focus();
+			el.setSelectionRange(el.value.length, el.value.length);
 		}
 	}, [props.activeNote]);
 
@@ -36,9 +34,10 @@ export default function SingleNote(props) {
 	const onChange = (e, field) => {
 		setSyncStatus('not synced');
 		setLastInputTime(Date.now());
-		const val = e.target.value;
-		if (field === 'title') setNote({ ...note, title: val });
-		if (field === 'content') setNote({ ...note, content: val });
+
+		const newVal = e.target.value;
+		if (field === 'title') props.updateNoteState({ title: newVal, content: props.activeNote.content }, props.activeNote._id);
+		if (field === 'content') props.updateNoteState({ title: props.activeNote.title, content: newVal }, props.activeNote._id);
 	}
 
 	// Handle form submit
@@ -49,13 +48,12 @@ export default function SingleNote(props) {
 
 		const updatedNote = {
 			userId: props.activeUser._id,
-			title: note.title,
-			content: note.content
+			title: props.activeNote.title,
+			content: props.activeNote.content
 		}
 
 		axios.put('http://localhost:5000/notes/update/'+props.activeNote._id, updatedNote)
 			.then(res => {
-				props.onUpdateNote(updatedNote, props.activeNote._id); // notify parent
 				setSyncStatus('synced');		
 			})
 			.catch(err => console.log(err));
@@ -68,8 +66,19 @@ export default function SingleNote(props) {
 			<div className="SingleNote">
 				<form id="form-update-note" onSubmit={onSubmit}>
 					<SyncStatus status={syncStatus} />
-					<input className="title" type="text" value={note.title} onChange={(e) => onChange(e, 'title')} placeholder="Title" />
-					<textarea id="note-content" value={note.content} onChange={(e) => onChange(e, 'content')} placeholder="Start typing your note here..." />
+					<input
+						className="title"
+						type="text"
+						placeholder="Title"
+						value={props.activeNote.title}
+						onChange={(e) => onChange(e, 'title')}
+					/>
+					<textarea
+						id="note-content"
+						value={props.activeNote.content}
+						onChange={(e) => onChange(e, 'content')}
+						placeholder="Start typing your note here..." 
+					/>
 					<input type="submit" className="submit" hidden />
 				</form>
 			</div>

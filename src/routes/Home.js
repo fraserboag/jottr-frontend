@@ -20,14 +20,15 @@ export default function Home(props) {
 
 	// Get notes for current active user (on Mount)
 	useEffect(() => {
-		if (props.activeUser._id) {
-			axios.get('http://localhost:5000/notes/byuser/' + props.activeUser._id)
-				.then((res) => {
-					setNotes(res.data);
-					setCheckedForNotes(true);
-				})
-				.catch(err => console.log(err));
-		}
+		if(!props.activeUser._id) return
+
+		axios.get('http://localhost:5000/notes/byuser/' + props.activeUser._id)
+			.then((res) => {
+				setNotes(res.data);
+				setCheckedForNotes(true);
+			})
+			.catch(err => console.log(err));
+
 	}, [props.activeUser]);
 
 	// Handle creation of new note
@@ -52,7 +53,7 @@ export default function Home(props) {
 	}
 
 	// Handle note update (SingleNote component)
-	const onUpdateNote = (updatedNote, updatedNoteId) => {
+	const updateNoteState = (updatedNote, updatedNoteId) => {
 		setNotes(
 			notes.map(note => note._id === updatedNoteId ? {
 				...note,
@@ -78,7 +79,7 @@ export default function Home(props) {
 					<SingleNote
 						activeUser={props.activeUser}
 						activeNote={notes.find(note => { return note._id === id })}
-						onUpdateNote={onUpdateNote}
+						updateNoteState={updateNoteState}
 					/>
 				</div>
 			}
