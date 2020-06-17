@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import '../styles/routes/Signup.scss';
 
@@ -52,6 +52,7 @@ export default function Signup(props) {
 				</fieldset>
 				<input type="submit" value="Sign Up" />
 			</form>
+			<Link to="/login">Login</Link>
 		</div>
 	);
 }

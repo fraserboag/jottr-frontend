@@ -40,17 +40,17 @@ export default function Home(props) {
 
 	// Handle delete button click (NotesList component)
 	const onClickDelete = (deleteId) => {
-		axios.delete('http://localhost:5000/notes/delete/' + deleteId)
-			.then(res => {
-				const updateState = notes.filter((note) => {
-					return note._id !== deleteId;
-				});
-				
-				setNotes(updateState);
 
-				if (deleteId === id) history.push('/');
-			})
+		const updateState = notes.filter((note) => {
+			return note._id !== deleteId;
+		});
+		setNotes(updateState);
+
+		if (deleteId === id) history.push('/');
+
+		axios.delete('http://localhost:5000/notes/delete/' + deleteId)
 			.catch(err => console.log(err));
+		
 	}
 
 	// Handle note update (SingleNote component)

@@ -3,24 +3,35 @@
 .NotesList{
 	background: $white;
 	position: relative;
+	letter-spacing: -0.05rem;
 
 	ul{
 		margin: 0;
-		padding: 15px 0 0 0;
+		padding: 0;
 		list-style-type: none;
 
 		li{
 			position: relative;
+			border-bottom: 1px solid transparent;
+			border-top: 1px solid transparent;
 
 			a{
 				display: block;
 				width: 100%;
-				padding: 10px 20px;
+				padding: 15px 20px;
 
 				.timestamp{
 					font-weight: normal;
 					font-size: 14px;
 					opacity: 0.5;
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+
+					svg{
+						margin-right: 5px;
+						font-size: 10px;
+					}
 				}
 			}
 
@@ -31,14 +42,13 @@
 				transform: translateY(-50%);
 				cursor: pointer;
 				font-weight: 700;
-				color: $red;
-				font-size: 14px;
-				padding: 2px 5px;
+				color: #aaa;
+				font-size: 16px;
+				line-height: 1;
 			}
-
+			
 			.delete:hover{
-				background: $red;
-				color: $purewhite;
+				color: $red;
 			}
 		}
 
@@ -48,7 +58,9 @@
 
 		li.active{
 			background: $purewhite;
-			font-weight: 700;
+			border-left: 5px solid $black;
+			border-top: 1px solid #eee;
+			border-bottom: 1px solid #eee;
 		}
 	}
 }

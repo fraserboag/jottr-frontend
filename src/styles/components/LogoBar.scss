@@ -5,12 +5,45 @@
 	background: $green;
 	color: $black;
 	font-weight: 700;
+	font-size: 20px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	letter-spacing: -0.05rem;
+
+	.logo{
+		display: flex;
+    	flex-direction: row;
+    	align-items: center;
+		justify-content: center;
+		
+		svg{
+			margin-right: 5px;
+			font-size: 16px;
+		}
+	}
 
 	.logout{
 		cursor: pointer;
 		font-weight: normal;
+		font-size: 18px;
+		line-height: 1;
+		font-weight: 700;
+		position: relative;
+		z-index: 2;
 	}
+}
+
+.LogoBar:before{
+	content: "";
+    display: block;
+    position: absolute;
+    background-image: linear-gradient(270deg,hsla(0,0%,100%,.5),transparent);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
 }

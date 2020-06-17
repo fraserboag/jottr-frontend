@@ -4,20 +4,21 @@
 	position: absolute;
 	display: flex;
 	align-items: center;
-	font-size: 14px;
-	right: 0;
-	top: 0;
+	font-size: 16px;
+	font-weight: bold;
+	left: 0;
+	top: -75px;
 	background: $purewhite;
-	padding: 5px 10px;
-	box-shadow: 0 0 20px -5px transparentize($black, 0.8);
+	padding: 10px;
+	box-shadow: 0 0 5px -1px transparentize($black, 0.8);
+	letter-spacing: -0.1rem;
 
-	img{
-		width: 14px;
-		height: 14px;
-		margin-right: 5px;
+	svg{
+		width: 24px;
+		height: 24px;
 	}
 
-	img.spin{
+	svg.spin{
 		animation: spin 2s linear infinite;
 	}
 }

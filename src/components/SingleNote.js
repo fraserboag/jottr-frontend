@@ -12,7 +12,7 @@ export default function SingleNote(props) {
 	// Focus main textarea
 	useEffect(() => {
 		if (!props.activeNote) return
-		if (document.querySelector('input.title') !== document.activeElement) {
+		if (document.querySelector('input.title') !== document.activeElement && document.getElementById('note-content') !== document.activeElement) {
 			const el = document.querySelector('#note-content');
 			el.focus();
 			el.setSelectionRange(el.value.length, el.value.length);
@@ -88,7 +88,6 @@ export default function SingleNote(props) {
 
 		return (
 			<div className="SingleNote">
-				Please select a note
 			</div>
 		);
 
