@@ -87,7 +87,8 @@ export default function SingleNote(props) {
 	} else {
 
 		return (
-			<div className="SingleNote">
+			<div className="SingleNote inactive">
+				<p>Choose a note from the menu, or<br />create a new one, to begin writing</p>
 			</div>
 		);
 

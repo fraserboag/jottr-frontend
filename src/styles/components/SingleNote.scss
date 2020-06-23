@@ -36,3 +36,18 @@
 		}
 	}
 }
+
+.SingleNote.inactive{
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	p{
+		opacity: 0.3;
+		font-size: 25px;
+		text-align: center;
+		line-height: 1.3;
+	}
+
+}
