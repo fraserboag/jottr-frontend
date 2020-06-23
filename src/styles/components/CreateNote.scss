@@ -10,11 +10,18 @@
 	padding: 20px;
 
 	input[type=text]{
-		border: 1px solid $black;
+		border: 1px solid #ddd;
+		border-right: 0 !important;
 		background: $purewhite;
 		padding: 10px 15px;
 		appearance: none;
 		flex: 1;
+		transition: 200ms;
+	}
+
+	input[type=text]:focus{
+		outline: none;
+		border: 1px solid $black;
 	}
 
 	input[type=submit]{
@@ -24,5 +31,10 @@
 		font-weight: 700;
 		border: 0;
 		cursor: pointer;
+		transition: 200ms;
+	}
+
+	input[type=submit]:hover{
+		opacity: 0.9;
 	}
 }

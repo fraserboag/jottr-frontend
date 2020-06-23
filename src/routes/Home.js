@@ -39,7 +39,9 @@ export default function Home(props) {
 	}
 
 	// Handle delete button click (NotesList component)
-	const onClickDelete = (deleteId) => {
+	const onClickDelete = (deleteId, e) => {
+
+		e.stopPropagation();
 
 		const updateState = notes.filter((note) => {
 			return note._id !== deleteId;
@@ -78,7 +80,8 @@ export default function Home(props) {
 		setNotes(updatedNotes);
 	}
 
-	const onOpenNote = () => {
+	const onOpenNote = (e) => {
+		e.stopPropagation();
 		setRecentlySorted(false);
 	}
 

@@ -34,7 +34,7 @@ export default function CreateNote(props) {
 	
 	// Output UI
 	return (
-		<form onSubmit={onSubmit} className="CreateNote">
+		<form onSubmit={onSubmit} onClick={(e) => e.stopPropagation()} className="CreateNote">
 			<input type="text" value={newNoteTitle} onChange={onChangeTitle} placeholder="Create new note..." />
 			<input type="submit" value="Go" />
 		</form>

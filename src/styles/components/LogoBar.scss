@@ -1,7 +1,7 @@
 @import '../variables';
 
 .LogoBar{
-	padding: 15px 20px;
+	padding: 23px 20px;
 	background: $green;
 	color: $black;
 	font-weight: 700;
@@ -33,6 +33,11 @@
 		font-weight: 700;
 		position: relative;
 		z-index: 2;
+		transition: 200ms;
+	}
+
+	.logout:hover{
+		transform: scale(1.2);
 	}
 }
 

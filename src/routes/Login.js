@@ -4,6 +4,8 @@ import { useHistory, Link } from "react-router-dom";
 
 import { BsLockFill } from "react-icons/bs";
 
+import Logo from '../images/logo-white.png';
+
 import '../styles/routes/AuthPagesCommon.scss';
 import '../styles/routes/Login.scss';
 
@@ -49,23 +51,27 @@ export default function Login(props) {
 
 	return (
 		<div className="Login outer">
-			<div className="form-container" data-inputs-visible={inputsVisible}>
-				<h1>Login</h1>
-				<p>or <Link to="/signup">sign up</Link> here</p>
-				<form className="login-form" onSubmit={onSubmit}>
-					{formErrors &&
-						<div className="error-container">{formErrors}</div>
-					}
-					<fieldset>
-						<label htmlFor="username">Email Address</label>
-						<input required id="username" type="email" name="username" value={formData.username} onChange={(e) => onChange(e, 'username')} />
-					</fieldset>
-					<fieldset>
-						<label htmlFor="password">Password</label>
-						<input required id="password" type="password" name="password" value={formData.password}  onChange={(e) => onChange(e, 'password')} />
-					</fieldset>
-					<button type="submit"><BsLockFill /> Login</button>
-				</form>
+			<img className="logo-mark" alt="" src={Logo} />
+			<div className="content-wrapper" data-inputs-visible={inputsVisible}>
+				<h1 className="logo">Jottr</h1>
+				<div className="form-container">
+					<h1>Login</h1>
+					<p>or <Link to="/signup">sign up</Link> here</p>
+					<form className="login-form" onSubmit={onSubmit}>
+						{formErrors &&
+							<div className="error-container">{formErrors}</div>
+						}
+						<fieldset>
+							<label htmlFor="username">Email Address</label>
+							<input required id="username" type="email" name="username" value={formData.username} onChange={(e) => onChange(e, 'username')} />
+						</fieldset>
+						<fieldset>
+							<label htmlFor="password">Password</label>
+							<input required id="password" type="password" name="password" value={formData.password}  onChange={(e) => onChange(e, 'password')} />
+						</fieldset>
+						<button type="submit"><BsLockFill /> Login</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	);

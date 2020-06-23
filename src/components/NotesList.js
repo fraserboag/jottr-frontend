@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import moment from "moment";
 
 import '../styles/components/NotesList.scss';
@@ -11,8 +11,14 @@ import { BsClock } from 'react-icons/bs';
 
 export default function NotesList(props) {
 
+	const history = useHistory();
+
+	const deselectNote = () => {
+		history.push('/');
+	}
+
 	return (
-		<div className="NotesList">
+		<div className="NotesList" onClick={deselectNote}>
 			
 			<LogoBar logoutUser={props.logoutUser} />
 
@@ -23,7 +29,7 @@ export default function NotesList(props) {
 							<div className="title">{note.title ? note.title : 'Untitled'}</div>
 							<div className="timestamp"><BsClock /> 	{moment(note.updatedAt).fromNow()}</div>
 						</Link>
-						<span className="delete" onClick={() => { props.onClickDelete(note._id) }}><FiTrash2 /></span>
+						<span className="delete" onClick={(e) => { props.onClickDelete(note._id, e) }}><FiTrash2 /></span>
 					</li>
 				))}
 			</ul>

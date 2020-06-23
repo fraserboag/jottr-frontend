@@ -11,7 +11,10 @@ export default function LogoBar(props) {
 
 	const history = useHistory();
 
-	const onClickLogout = () => {
+	const onClickLogout = (e) => {
+
+		e.stopPropagation();
+
 		axios.post('http://localhost:5000/auth/logout')
 			.then(res => {
 				props.logoutUser();
