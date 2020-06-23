@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useHistory, Link } from "react-router-dom";
 
+import { BsLockFill } from "react-icons/bs";
+
+import '../styles/routes/AuthPagesCommon.scss';
 import '../styles/routes/Login.scss';
 
 export default function Login(props) {
@@ -10,6 +13,15 @@ export default function Login(props) {
 		username: "",
 		password: ""
 	});
+	const [inputsVisible, setInputsVisible] = useState(false);
+
+	useEffect(() => {
+		setTimeout(() => {
+			document.querySelector('input#username').value = '';
+			document.querySelector('input#password').value = '';
+			setInputsVisible(true);
+		}, 500);
+	}, []);
 
 	const [formErrors, setFormErrors] = useState();
 
@@ -30,24 +42,31 @@ export default function Login(props) {
 					_id: res.data._id
 				});
 				history.push('/');
-			}).catch(err => setFormErrors(err.response.data));
+			}).catch(err => {
+				setFormErrors("Incorrect email address or password.");
+			});
 	}
 
 	return (
-		<div className="Login">
-			<form className="login-form" onSubmit={onSubmit}>
-				<div className="error-container">{formErrors}</div>
-				<fieldset>
-					<label htmlFor="username">Email Address</label>
-					<input required id="username" type="email" name="username" value={formData.username} onChange={(e) => onChange(e, 'username')} />
-				</fieldset>
-				<fieldset>
-					<label htmlFor="password">Password</label>
-					<input required id="password" type="password" name="password" value={formData.password}  onChange={(e) => onChange(e, 'password')} />
-				</fieldset>
-				<input type="submit" value="Login" />
-			</form>
-			<Link to="/signup">Sign Up</Link>
+		<div className="Login outer">
+			<div className="form-container" data-inputs-visible={inputsVisible}>
+				<h1>Login</h1>
+				<p>or <Link to="/signup">sign up</Link> here</p>
+				<form className="login-form" onSubmit={onSubmit}>
+					{formErrors &&
+						<div className="error-container">{formErrors}</div>
+					}
+					<fieldset>
+						<label htmlFor="username">Email Address</label>
+						<input required id="username" type="email" name="username" value={formData.username} onChange={(e) => onChange(e, 'username')} />
+					</fieldset>
+					<fieldset>
+						<label htmlFor="password">Password</label>
+						<input required id="password" type="password" name="password" value={formData.password}  onChange={(e) => onChange(e, 'password')} />
+					</fieldset>
+					<button type="submit"><BsLockFill /> Login</button>
+				</form>
+			</div>
 		</div>
 	);
 }

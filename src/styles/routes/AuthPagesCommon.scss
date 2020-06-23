@@ -1,0 +1,142 @@
+@import '../variables.scss';
+
+.outer{
+	background: $green;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.outer:before{
+	content: "";
+    display: block;
+    position: absolute;
+    background-image: linear-gradient(270deg,hsla(0,0%,100%,.5),transparent);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.error-container{
+	background: #df524b;
+	margin-bottom: 20px;
+	padding: 10px 15px;
+	border-radius: 5px;
+	color: $white;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.form-container{
+	position: relative;
+	z-index: 2;
+	background: $white;
+	padding: 50px 60px;
+	width: 100%;
+	max-width: 450px;
+	box-shadow: 0 0 5px 0px transparentize($black, 0.8);
+	opacity: 0;
+	transform: translateY(20px);
+	transition: 500ms;
+	border-top: 5px solid $black;
+
+	h1{
+		font-size: 30px;
+		font-weight: bold;
+		line-height: 1;
+	}
+
+	p{
+		margin-bottom: 30px;
+		font-size: 16px;
+
+		a{
+			font-weight: bold;
+		}
+
+		a:hover{
+			opacity: 0.8;
+		}
+	}
+
+	fieldset{
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 20px;
+
+		input{
+			display: block;
+			width: 100%;
+			background: $purewhite;
+			border: 0;
+			padding: 10px 15px;
+			appearance: none;
+			border: 1px solid #ccc;
+		}
+
+		input:focus{
+			border: 1px solid $black;
+			outline: none;
+		}
+
+		input:-webkit-autofill {
+			-webkit-box-shadow: 0 0 0 1000px white inset !important;
+		}
+
+		label{
+			font-size: 16px;
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+	}
+
+	form[data-inputs-visible="true"]{
+		fieldset{
+			input{
+				opacity: 1;
+			}
+		}
+	}
+
+	button[type=submit]{
+		background: $black;
+		color: $white;
+		padding: 14px 30px 12px 30px;
+		border: 0;
+		background-image: linear-gradient(to right, #496083 , #1c3965);
+		font-weight: bold;
+		cursor: pointer;
+		border-bottom: 5px solid $black;
+		margin-top: 25px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 17px;
+
+		svg{
+			max-width: 13px;
+			margin-right: 7px;
+		}
+	}
+
+	button[type=submit]:active{
+		border-bottom: 2px solid $black;
+		margin-top: 28px;
+		outline: none;
+	}
+
+	button[type=submit]:hover{
+		opacity: 0.9;
+	}
+
+}
+
+.form-container[data-inputs-visible="true"]{
+	transform: translateY(0);
+	opacity: 1;
+}
+

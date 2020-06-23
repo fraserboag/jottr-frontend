@@ -1,3 +1,4 @@
+@import 'reset';
 @import 'animations';
 @import 'variables';
 
@@ -14,6 +15,7 @@ body, input, textarea{
 	line-height: 1.6;
 	letter-spacing: -0.05rem;
 	padding: 0;
+	appearance: none;
 }
 
 input::placeholder, textarea::placeholder{
