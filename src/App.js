@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import 'normalize.css';
 
 import Home from './routes/Home';
 import Signup from './routes/Signup';
