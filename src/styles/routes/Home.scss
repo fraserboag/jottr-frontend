@@ -12,10 +12,58 @@
 	}
 
 	.NotesList{
-		width: 400px;
+		width: 25vw;
+		min-width: 350px;
 	}
 
 	.SingleNote{
 		flex: 1;
 	}
+
+	.mobile-toggle{
+		display: none;
+		align-items: center;
+		font-weight: bold;
+		background: $green;
+		padding: 10px;
+		position: fixed;
+		top: 0;
+		left: 0;
+		cursor: pointer;
+
+		svg{
+			width: 28px;
+			height: 28px;
+		}
+	}
+
+	.mobile-menu-cover{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 9;
+		display: none;
+	}
+}
+
+@media (max-width: 1000px){
+
+	.Home{
+		.NotesList{
+			width: 100%;
+			max-width: 400px;
+			min-width: 0;
+		}
+
+		.mobile-toggle{
+			display: flex;
+		}
+	}
+
+	[data-menuopen=true] .mobile-menu-cover{
+		display: block;
+	}
+
 }

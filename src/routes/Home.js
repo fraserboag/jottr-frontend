@@ -6,12 +6,15 @@ import NotesList from '../components/NotesList';
 import SingleNote from '../components/SingleNote';
 import '../styles/routes/Home.scss';
 
+import { IoMdMenu } from 'react-icons/io';
+
 export default function Home(props) {
 
 	// Set state
 	const [notes, setNotes] = useState([]);
 	const [checkedForNotes, setCheckedForNotes] = useState(false);
 	const [recentlySorted, setRecentlySorted] = useState(true);
+	const [menuOpen, setMenuOpen] = useState(true);
 
 	// Get ID from URL
 	const { id } = useParams();
@@ -35,6 +38,7 @@ export default function Home(props) {
 	// Handle creation of new note
 	const onCreateNote = (newNote) => {
 		setNotes(notes => [newNote.data, ...notes]);
+		setMenuOpen(false);
 		history.push('/note/' + newNote.data._id);
 	}
 
@@ -82,11 +86,20 @@ export default function Home(props) {
 
 	const onOpenNote = (e) => {
 		e.stopPropagation();
+		setMenuOpen(false);
 		setRecentlySorted(false);
 	}
 
+	const openMenu = () => {
+		setMenuOpen(true);
+	}
+
+	const closeMenu = () => {
+		setMenuOpen(false);
+	}
+
 	return (
-		<div className="Home">
+		<div className="Home" data-menuopen={menuOpen}>
 			{checkedForNotes &&
 				<div className="wrapper">
 					<NotesList
@@ -103,6 +116,8 @@ export default function Home(props) {
 						activeNote={notes.find(note => { return note._id === id })}
 						updateNoteState={updateNoteState}
 					/>
+					<div className="mobile-toggle" onClick={openMenu}><IoMdMenu /></div>
+					{menuOpen && <div className="mobile-menu-cover" onClick={closeMenu}></div> }
 				</div>
 			}
 		</div>

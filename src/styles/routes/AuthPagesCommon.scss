@@ -87,8 +87,10 @@
 				font-weight: bold;
 			}
 
-			a:hover{
-				opacity: 0.8;
+			@media(hover: hover){
+				a:hover{
+					opacity: 0.8;
+				}
 			}
 		}
 
@@ -155,8 +157,10 @@
 			}
 		}
 
-		button[type=submit]:hover{
-			opacity: 0.9;
+		@media(hover: hover){
+			button[type=submit]:hover{
+				opacity: 0.9;
+			}
 		}
 
 	}

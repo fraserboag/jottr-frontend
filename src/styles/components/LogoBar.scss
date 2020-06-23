@@ -36,8 +36,10 @@
 		transition: 200ms;
 	}
 
-	.logout:hover{
-		transform: scale(1.2);
+	@media(hover: hover){
+		.logout:hover{
+			transform: scale(1.2);
+		}
 	}
 }
 

@@ -7,7 +7,6 @@ import { BsLockFill } from "react-icons/bs";
 import Logo from '../images/logo-white.png';
 
 import '../styles/routes/AuthPagesCommon.scss';
-import '../styles/routes/Login.scss';
 
 export default function Login(props) {
 

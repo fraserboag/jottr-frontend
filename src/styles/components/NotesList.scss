@@ -50,14 +50,19 @@
 				transition: 200ms;
 			}
 			
-			.delete:hover{
-				color: $red;
-				transform: translateY(-50%) scale(1.2)
+			@media(hover: hover){
+				.delete:hover{
+					color: $red;
+					transform: translateY(-50%) scale(1.2)
+				}
 			}
+
 		}
 
-		li:hover{
-			background: $purewhite;
+		@media(hover: hover){
+			li:hover{
+				background: $purewhite;
+			}
 		}
 
 		li.active{
@@ -67,4 +72,23 @@
 			border-bottom: 1px solid #eee;
 		}
 	}
+}
+
+@media (max-width: 1000px){
+
+	[data-menuopen=true] .NotesList{
+		transform: translateX(0);
+	}
+
+	.NotesList{
+		position: fixed;
+		left: 0;
+		top: 0;
+		height: 100%;
+		z-index: 10;
+		box-shadow: 0 0 5px 0px transparentize($black, 0.8);
+		transform: translateX(-100%);
+		transition: 300ms;
+	}
+
 }

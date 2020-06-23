@@ -2,22 +2,39 @@
 
 .SyncStatus{
 	position: absolute;
+	right: -54px;
+	top: -40px;
 	display: flex;
+	flex-direction: row;
 	align-items: center;
-	font-weight: bold;
-	right: 0;
-	top: 0;
-	background: $purewhite;
-	padding: 10px;
-	box-shadow: 0 0 5px -1px transparentize($black, 0.8);
-	letter-spacing: -0.1rem;
+	font-size: 18px;
+	opacity: 0.7;
 
 	svg{
 		width: 28px;
 		height: 28px;
+		margin-left: 5px;
 	}
 
 	svg.spin{
 		animation: spin 2s linear infinite;
 	}
+}
+
+
+@media (max-width: 1000px){
+	
+	.SyncStatus{
+		top: -68px;
+		right: calc(-6vw + 11px);
+	}
+
+}
+
+@media (max-width: 600px){
+
+	.SyncStatus{
+		font-size: 16px;
+	}
+	
 }
