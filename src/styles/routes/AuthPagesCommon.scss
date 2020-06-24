@@ -8,6 +8,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	position: relative;
 
 	&:before{
 		content: "";
@@ -61,7 +62,7 @@
 	}
 
 	.content-wrapper{
-		width: 100%;
+		width: 90%;
 		max-width: 500px;
 		position: relative;
 		z-index: 2;
@@ -179,6 +180,68 @@
 			opacity: 0.4;
 			transform: translateY(0);
 		}
+	}
+
+}
+
+
+@media (max-width: 600px){
+
+	.Login, .Signup{
+
+		.form-container{
+			padding: 50px 40px 55px 40px;
+		}
+
+		.logo{
+			left: 30px;
+			font-size: 80px;
+			letter-spacing: -5px;
+			top: -91px;
+		}
+
+	}
+
+}
+
+
+@media (max-width: 400px){
+
+	.Login, .Signup{
+
+		.form-container{
+			padding: 10vw 25px 10vw 25px;
+
+			h1{
+				font-size: 25px;
+			}
+
+			p{
+				margin-bottom: 6vw;
+			}
+
+			fieldset{
+				margin-bottom: 10px;
+				label{
+					font-size: 15px;
+					margin-bottom: 0;
+				}
+				input{
+					padding: 10px;
+				}
+			}
+
+			button[type=submit]{
+				padding: 15px;
+				margin-top: 15px;
+			}
+
+		}
+
+		.logo{
+			left: 10px;
+		}
+		
 	}
 
 }

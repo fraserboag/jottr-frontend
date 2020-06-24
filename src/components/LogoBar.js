@@ -2,8 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-import Logo from '../images/logo-dark.png';
-import { RiLogoutBoxRLine } from "react-icons/ri";
+import { RiLogoutCircleLine } from "react-icons/ri";
 
 import '../styles/components/LogoBar.scss';
 
@@ -25,8 +24,7 @@ export default function LogoBar(props) {
 
 	return (
 		<div className="LogoBar">
-			<span className="logo"><img src={Logo} alt="" /> Jottr</span>
-			<span className="logout" onClick={onClickLogout}><RiLogoutBoxRLine /></span>
+			<span className="logo"><RiLogoutCircleLine onClick={onClickLogout} /> Jottr</span>
 		</div>
 	)
 }

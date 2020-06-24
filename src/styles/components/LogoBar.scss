@@ -18,27 +18,20 @@
     	flex-direction: row;
     	align-items: center;
 		justify-content: center;
-		
-		img{
-			margin-right: 5px;
-			width: 18px;
-		}
-	}
-
-	.logout{
-		cursor: pointer;
-		font-weight: normal;
-		font-size: 18px;
-		line-height: 1;
-		font-weight: 700;
 		position: relative;
 		z-index: 2;
-		transition: 200ms;
-	}
+		
+		svg{
+			margin-right: 5px;
+			width: 18px;
+			cursor: pointer;
+			transition: 200ms;
+		}
 
-	@media(hover: hover){
-		.logout:hover{
-			transform: scale(1.2);
+		@media(hover: hover){
+			svg:hover{
+				transform: scale(1.2);
+			}
 		}
 	}
 }
