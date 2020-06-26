@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import '../styles/components/SingleNote.scss';
 import SyncStatus from './SyncStatus';
+import apiUrl from '../env.js';
 
 export default function SingleNote(props) {
 
@@ -52,7 +53,7 @@ export default function SingleNote(props) {
 			content: props.activeNote.content
 		}
 
-		axios.put('http://localhost:5000/notes/update/'+props.activeNote._id, updatedNote)
+		axios.put(apiUrl + '/notes/update/'+props.activeNote._id, updatedNote)
 			.then(res => {
 				setSyncStatus('synced');		
 			})

@@ -7,6 +7,8 @@ import Login from './routes/Login';
   
 import './styles/App.scss';
 
+import apiUrl from './env.js';
+
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 
@@ -24,7 +26,7 @@ export default function App() {
 
 	// Check if there's an active session on first load
 	useEffect(() => {
-		axios.get('http://localhost:5000/auth')
+		axios.get(apiUrl + '/auth')
 			.then(res => {
 				if (res.data.user) {
 					setActiveUser({ _id: res.data.user._id });

@@ -6,6 +6,8 @@ import NotesList from '../components/NotesList';
 import SingleNote from '../components/SingleNote';
 import '../styles/routes/Home.scss';
 
+import apiUrl from '../env.js';
+
 import { IoMdMenu } from 'react-icons/io';
 
 export default function Home(props) {
@@ -26,7 +28,7 @@ export default function Home(props) {
 	useEffect(() => {
 		if(!props.activeUser._id) return
 
-		axios.get('http://localhost:5000/notes/byuser/' + props.activeUser._id)
+		axios.get(apiUrl + '/notes/byuser/' + props.activeUser._id)
 			.then((res) => {
 				setNotes(res.data);
 				setCheckedForNotes(true);
@@ -54,7 +56,7 @@ export default function Home(props) {
 
 		if (deleteId === id) history.push('/');
 
-		axios.delete('http://localhost:5000/notes/delete/' + deleteId)
+		axios.delete(apiUrl + '/notes/delete/' + deleteId)
 			.catch(err => console.log(err));
 		
 	}

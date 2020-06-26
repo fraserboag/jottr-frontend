@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import apiUrl from '../env.js';
 
 import { RiLogoutCircleLine } from "react-icons/ri";
 
@@ -14,7 +15,7 @@ export default function LogoBar(props) {
 
 		e.stopPropagation();
 
-		axios.post('http://localhost:5000/auth/logout')
+		axios.post(apiUrl + '/auth/logout')
 			.then(res => {
 				props.logoutUser();
 				history.push('/login');

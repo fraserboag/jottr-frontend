@@ -6,6 +6,8 @@ import { BsLockFill } from "react-icons/bs";
 
 import Logo from '../images/logo-white.png';
 
+import apiUrl from '../env.js';
+
 import '../styles/routes/AuthPagesCommon.scss';
 
 export default function Login(props) {
@@ -37,7 +39,7 @@ export default function Login(props) {
 	const onSubmit = (e) => {
 		e.preventDefault();
 
-		axios.post('http://localhost:5000/auth', formData)
+		axios.post(apiUrl + '/auth', formData)
 			.then(res => {
 				props.updateUser({
 					_id: res.data._id

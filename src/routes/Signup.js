@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import { BsLockFill } from "react-icons/bs";
 
+import apiUrl from '../env.js';
+
 import Logo from '../images/logo-white.png';
 
 import '../styles/routes/AuthPagesCommon.scss';
@@ -37,7 +39,7 @@ export default function Signup(props) {
 	const onSubmit = (e) => {
 		e.preventDefault();
 
-		axios.post('http://localhost:5000/auth/signup', formData)
+		axios.post(apiUrl + '/auth/signup', formData)
 			.then(res => {
 				console.log(res);
 				setShowSuccess(true);

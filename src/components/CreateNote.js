@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import '../styles/components/CreateNote.scss';
+import apiUrl from '../env.js';
 
 export default function CreateNote(props) {
 
@@ -23,7 +24,7 @@ export default function CreateNote(props) {
 			content: ''
 		}
 
-		axios.post('http://localhost:5000/notes/add', newNote)
+		axios.post(apiUrl + '/notes/add', newNote)
 			.then(res => {
 				props.onCreateNote(res);
 				setNewNoteTitle('');
