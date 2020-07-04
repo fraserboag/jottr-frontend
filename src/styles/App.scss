@@ -6,10 +6,6 @@
 	box-sizing: border-box;
 }
 
-html, body{
-	height: 100%;
-}
-
 body, input, textarea{
 	font-family: 'Overpass', sans-serif;
 	font-weight: 300;
@@ -29,7 +25,13 @@ input::placeholder, textarea::placeholder{
 #root{
 	display: flex;
 	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	height: 100%;
+	width: 100%;
 }
 
 nav{
