@@ -3,7 +3,7 @@
 .CreateNote{
 	display: flex;
 	flex-direction: row;
-	position: absolute;
+	position: sticky;
 	bottom: 0;
 	left: 0;
 	width: 100%;
