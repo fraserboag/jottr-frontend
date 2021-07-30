@@ -1,4 +1,4 @@
-let apiUrl = "https://jottrapi.boag.online";
+let apiUrl = "https://api.jottrapp.com";
 
 if (process.env.NODE_ENV === "development") apiUrl = "http://localhost:5000";
 
