@@ -51,10 +51,9 @@ export default function Signup(props) {
 		<div className="Signup outer">
 			<img className="logo-mark" alt="" src={Logo} />
 			<div className="content-wrapper" data-inputs-visible={inputsVisible}>
-				<h1 className="logo">Jottr</h1>
 				<div className="form-container">
-					<h1>Create an Account</h1>
-					<p>or <Link to="/login">login</Link> here</p>
+					<h1>Jottr</h1>
+					<p>Sign up below or <Link to="/login">login</Link> here</p>
 
 					{!showSuccess ?
 

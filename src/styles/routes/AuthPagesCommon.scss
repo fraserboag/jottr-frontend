@@ -7,7 +7,6 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
 	position: relative;
 
 	&:before{
@@ -63,19 +62,23 @@
 
 	.content-wrapper{
 		width: 90%;
+		max-height: 90%;
 		max-width: 500px;
 		position: relative;
 		z-index: 2;
+		margin-top: auto;
+		margin-bottom: auto;
+		overflow: auto;
 	}
 
 	.form-container{
 		background: $white;
-		padding: 50px 60px 55px 60px;
+		padding: 60px 40px;
 		width: 100%;
 		box-shadow: 0 0 5px 0px transparentize($black, 0.8);
 
 		h1{
-			font-size: 30px;
+			font-size: 50px;
 			font-weight: bold;
 			line-height: 1;
 		}
@@ -190,7 +193,7 @@
 	.Login, .Signup{
 
 		.form-container{
-			padding: 50px 40px 55px 40px;
+			padding: 50px 30px;
 		}
 
 		.logo{
@@ -210,10 +213,10 @@
 	.Login, .Signup{
 
 		.form-container{
-			padding: 10vw 25px 10vw 25px;
+			padding: 40px 20px;
 
 			h1{
-				font-size: 25px;
+				font-size: 40px;
 			}
 
 			p{

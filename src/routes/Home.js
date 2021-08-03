@@ -49,15 +49,19 @@ export default function Home(props) {
 
 		e.stopPropagation();
 
-		const updateState = notes.filter((note) => {
-			return note._id !== deleteId;
-		});
-		setNotes(updateState);
+		const conf = window.confirm('Are you sure you want to delete this note? This cannot be undone.');
 
-		if (deleteId === id) history.push('/');
+		if(conf){
+			const updateState = notes.filter((note) => {
+				return note._id !== deleteId;
+			});
+			setNotes(updateState);
 
-		axios.delete(apiUrl + '/notes/delete/' + deleteId)
-			.catch(err => console.log(err));
+			if (deleteId === id) history.push('/');
+
+			axios.delete(apiUrl + '/notes/delete/' + deleteId)
+				.catch(err => console.log(err));
+		}
 		
 	}
 

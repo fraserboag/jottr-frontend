@@ -56,8 +56,8 @@ export default function Login(props) {
 			<div className="content-wrapper" data-inputs-visible={inputsVisible}>
 				<h1 className="logo">Jottr</h1>
 				<div className="form-container">
-					<h1>Login</h1>
-					<p>or <Link to="/signup">sign up</Link> here</p>
+					<h1>Jottr</h1>
+					<p>Login below or <Link to="/signup">sign up</Link> here</p>
 					<form className="login-form" onSubmit={onSubmit}>
 						{formErrors &&
 							<div className="error-container">{formErrors}</div>
